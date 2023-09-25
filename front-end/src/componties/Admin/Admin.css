@@ -1,0 +1,20 @@
+.create{
+   margin: 0px auto;
+}
+.product-margin{
+   margin: 0px auto;
+}
+.image-reading{
+width:20px;
+border-radius: 50%;   
+}
+.login{
+   margin: 0px auto ;
+   margin-top:15%;
+   text-align: center;
+   background-color:white;
+   padding:20px;
+}
+.login input{
+   background-color:rgba(0, 0, 0, 0.137);
+}
