@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../Home/Header.css'
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
+  const [search , setSearch] = useState([])
+
+const SearchProduct = async(key)=>{
+  try {
+    const response = await fetch(`http://localhost:3000/api/v1/search/${key}`)
+    const res = await response.json()
+    setSearch(res.result)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
     return (
         <div>
               <nav className="navbar navbar-expand-lg ">
@@ -44,9 +56,15 @@ const Header = () => {
     
 
     <div className="ms-auto">
-<input className="form-control me-2 search-bar-design w-100" type="search" placeholder="Search" aria-label="Search" />
+<input className="form-control me-2 
+search-bar-design w-100" 
+type="search"
+
+ placeholder="Search"
+  aria-label="Search" />
     </div>
     </div>
+
   </div>
 </nav>
         </div>

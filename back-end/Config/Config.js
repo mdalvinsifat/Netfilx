@@ -101,4 +101,32 @@ const DeleteRouter = async(req,res) =>{
 }
 
 
-module.exports = {GetRouter,CreateRouter,ReadRouter,UpdateRouter,DeleteRouter}
+
+// search 
+
+const SearchController = async( req, res) =>{
+    try {
+
+        const {key} = req.params
+        const result = await Product.find({
+          $or:[
+            {name:{$regex : key, $options:"i"}}
+          ]
+       
+        })
+
+        res.status(200).send({
+            success:true,
+            message:"Search Successfully",
+            result
+        })
+        
+    } catch (error) {
+        res.status(404).send({
+            success:false, 
+            message:"search product is not defaind"
+        })
+    }
+}
+
+module.exports = {GetRouter,CreateRouter,ReadRouter,UpdateRouter,DeleteRouter,SearchController}
